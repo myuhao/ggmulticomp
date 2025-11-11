@@ -109,7 +109,6 @@ StatDunnett = ggproto(
   if (!show.ns) {
     stat = mutate(stat, label = ifelse(label == "ns", NA, label))
   }
-  print(stat)
   return(stat)
 }
 
