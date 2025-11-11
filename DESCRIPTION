@@ -1,0 +1,23 @@
+Package: ggmulticomp
+Type: Package
+Title: Layers For Multiple Comparison
+Version: 0.0.1
+Authors@R: c(
+    person("Yuhao", "Min", , "min.yuhao@mayo.edu", role = c("aut", "cre"))
+  )
+Description: More about what it does (maybe more than one line).
+    Continuation lines should be indented.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    ggplot2,
+    DescTools,
+    dplyr,
+    magrittr,
+    tibble,
+    tidyr
+RoxygenNote: 7.3.3
