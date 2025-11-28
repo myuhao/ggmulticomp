@@ -1,11 +1,9 @@
-
-
 #' Dunnett Multiple Test
 #'
 #' @rdname Dunnett
 #'
 #' @param ref.group The reference group to be used. Default to the first level of x-axis (sort())
-#' @param offset How much the label will offset from the data points. Default 0.2
+#' @param offset How much the label will offset from the data points. Default 0.1
 #' @param trans_value A function that accept a vector as input and output a transformed vector. To be applied to y values before statistics test.
 #' @param show.ns Should non-significant results be shown
 #'
@@ -77,13 +75,6 @@ StatDunnett = ggproto(
   required_aes = c("x", "y")
 )
 
-#' @keywords internal
-.get_y.position = function(data, offset) {
-  data %>%
-    group_by(x) %>%
-    summarize(y = max(y) * (1+offset)) %>%
-    ungroup()
-}
 
 #' @keywords internal
 .dunnett_test = function(data, ref.group, trans_value, show.ns) {
@@ -112,15 +103,6 @@ StatDunnett = ggproto(
   return(stat)
 }
 
-#' @keywords internal
-.label_p_value = function(x) {
-  stats::symnum(
-    x,
-    cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1),
-    symbols = c("****", "***", "**", "*", "ns"),
-    na = ""
-  )
-}
 
 
 
