@@ -1,4 +1,4 @@
-
+library(ggplot2)
 test_that(
   "Test stat_dunnett", {
     plot = iris %>%
