@@ -29,7 +29,7 @@ StatDunnett
 \arguments{
 \item{ref.group}{The reference group to be used. Default to the first level of x-axis (sort())}
 
-\item{offset}{How much the label will offset from the data points. Default 0.2}
+\item{offset}{How much the label will offset from the data points. Default 0.1}
 
 \item{trans_value}{A function that accept a vector as input and output a transformed vector. To be applied to y values before statistics test.}
 
@@ -40,6 +40,6 @@ Perform Dunnett's Multiple Test Against a Reference group.
 Display the adjusted p-values on the figure.
 }
 \seealso{
-[DescTools::DunnettTest()]
+DescTools::DunnettTest()
 }
 \keyword{datasets}
