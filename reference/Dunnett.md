@@ -38,7 +38,7 @@ of length 4.
 
 - offset:
 
-  How much the label will offset from the data points. Default 0.2
+  How much the label will offset from the data points. Default 0.1
 
 - trans_value:
 
@@ -51,4 +51,4 @@ of length 4.
 
 ## See also
 
-\[DescTools::DunnettTest()\]
+DescTools::DunnettTest()

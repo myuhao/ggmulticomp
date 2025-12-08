@@ -16,11 +16,13 @@ remote::install_github("myuhao/ggmulticomp")
 library(ggplot2)
 library(ggmulticomp)
 
-iris |>
+dat = iris |>
   tidyr::pivot_longer(-Species) |>
   dplyr::mutate(
     y = value, x = Species
-  ) |>
+  ) 
+
+dat |>
   ggplot(aes(x = Species, y = value)) +
   geom_point() +
   stat_summary(geom = GeomCol) +
@@ -32,3 +34,17 @@ iris |>
 ```
 
 ![](reference/figures/README-example-1.png)
+
+``` r
+
+dat |>
+  ggplot(aes(x = Species, y = value)) +
+  geom_point() +
+  stat_summary(geom = GeomCol) +
+  geom_tukey() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.2))) +
+  facet_grid(rows = vars(name), cols = vars("a"), scale = "free_y")
+#> No summary function supplied, defaulting to `mean_se()`
+```
+
+![](reference/figures/README-example-2.png)

@@ -3,10 +3,12 @@
 More about what it does (maybe more than one line). Continuation lines
 should be indented.
 
+## See also
+
+Useful links:
+
+- <http://www.myuhao.com/ggmulticomp/>
+
 ## Author
 
-**Maintainer**:
-
-Other contributors:
-
-- Yuhao Min <min.yuhao@mayo.edu> \[contributor\]
+**Maintainer**: Yuhao Min <min.yuhao@mayo.edu>

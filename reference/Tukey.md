@@ -1,0 +1,67 @@
+# Tukey HSD Test
+
+Perform Tukey HSD Test. Display the adjusted p-values on the figure.
+
+## Usage
+
+``` r
+stat_tukey(
+  mapping = NULL,
+  data = NULL,
+  geom = GeomBracket,
+  position = "identity",
+  inherit.aes = TRUE,
+  show.ns = FALSE,
+  trans_value = NULL,
+  ...
+)
+
+StatTukey
+
+geom_tukey(
+  mapping = NULL,
+  data = NULL,
+  stat = "tukey",
+  position = "identity",
+  inherit.aes = TRUE,
+  show.ns = FALSE,
+  trans_value = NULL,
+  text_size = 12,
+  line_size = 1,
+  linetype = "solid",
+  ...
+)
+
+GeomTukey
+```
+
+## Format
+
+An object of class `StatTukey` (inherits from `Stat`, `ggproto`, `gg`)
+of length 4.
+
+An object of class `GeomTukey` (inherits from `GeomBracket`, `Geom`,
+`ggproto`, `gg`) of length 1.
+
+## Arguments
+
+- show.ns:
+
+  Should non-significant results be shown
+
+- trans_value:
+
+  A function that accept a vector as input and output a transformed
+  vector. To be applied to y values before statistics test.
+
+- text_size:
+
+  Size of the significance symbols, default 12pt
+
+- line_size:
+
+  Size of the lines spanning each group, default 1pt
+
+- linetype:
+
+  Type of the line spanning each group

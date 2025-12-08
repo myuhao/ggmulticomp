@@ -7,12 +7,12 @@
 ## Citation
 
 Min Y (2025). *ggmulticomp: Layers For Multiple Comparison*. R package
-version 0.0.1, <http://www.myuhao.com/ggmulticomp/>.
+version 0.1.0, <http://www.myuhao.com/ggmulticomp/>.
 
     @Manual{,
       title = {ggmulticomp: Layers For Multiple Comparison},
       author = {Yuhao Min},
       year = {2025},
-      note = {R package version 0.0.1},
+      note = {R package version 0.1.0},
       url = {http://www.myuhao.com/ggmulticomp/},
     }
