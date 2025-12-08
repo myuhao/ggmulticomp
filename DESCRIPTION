@@ -1,7 +1,7 @@
 Package: ggmulticomp
 Type: Package
 Title: Layers For Multiple Comparison
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: c(
     person("Yuhao", "Min", , "min.yuhao@mayo.edu", role = c("aut", "cre"))
   )
@@ -19,6 +19,7 @@ Imports:
     dplyr,
     magrittr,
     tibble,
-    tidyr
+    tidyr,
+    grid
 RoxygenNote: 7.3.3
 URL: http://www.myuhao.com/ggmulticomp/

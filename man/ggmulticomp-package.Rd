@@ -8,13 +8,15 @@
 \description{
 More about what it does (maybe more than one line). Continuation lines should be indented.
 }
-\author{
-\strong{Maintainer}: 
-
-Other contributors:
+\seealso{
+Useful links:
 \itemize{
-  \item Yuhao Min \email{min.yuhao@mayo.edu} [contributor]
+  \item \url{http://www.myuhao.com/ggmulticomp/}
 }
+
+}
+\author{
+\strong{Maintainer}: Yuhao Min \email{min.yuhao@mayo.edu}
 
 }
 \keyword{internal}
