@@ -4,13 +4,9 @@
 \name{stat_tukey}
 \alias{stat_tukey}
 \alias{StatTukey}
-\alias{geom_tukey}
-\alias{GeomTukey}
 \title{Tukey HSD Test}
 \format{
 An object of class \code{StatTukey} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 4.
-
-An object of class \code{GeomTukey} (inherits from \code{GeomBracket}, \code{Geom}, \code{ggproto}, \code{gg}) of length 1.
 }
 \usage{
 stat_tukey(
@@ -21,31 +17,18 @@ stat_tukey(
   inherit.aes = TRUE,
   show.ns = FALSE,
   trans_value = NULL,
+  p.format = NULL,
   ...
 )
 
 StatTukey
-
-geom_tukey(
-  mapping = NULL,
-  data = NULL,
-  stat = "tukey",
-  position = "identity",
-  inherit.aes = TRUE,
-  show.ns = FALSE,
-  trans_value = NULL,
-  text_size = 12,
-  line_size = 1,
-  linetype = "solid",
-  ...
-)
-
-GeomTukey
 }
 \arguments{
 \item{show.ns}{Should non-significant results be shown}
 
 \item{trans_value}{A function that accept a vector as input and output a transformed vector. To be applied to y values before statistics test.}
+
+\item{p.format}{The format of the pvalue to display. This should be a function that accept dbl as input, and return a chr to be displayed. Default to show stars}
 
 \item{text_size}{Size of the significance symbols, default 12pt}
 

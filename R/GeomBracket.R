@@ -66,7 +66,7 @@ GeomBracket = ggproto(
     coords$y = unit(coords$y, "npc") + 0:(nrow(coords)-1) * line_height
 
     # vjust according to the text
-    vjust = ifelse(coords$adj.p.value < 0.05, 0.15, -0.2)
+    vjust = ifelse(grepl("\\*", coords$label), 0.15, -0.2)
 
     grid::gList(
       grid::segmentsGrob(

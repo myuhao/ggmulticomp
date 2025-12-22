@@ -1,7 +1,7 @@
 Package: ggmulticomp
 Type: Package
 Title: Layers For Multiple Comparison
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Yuhao", "Min", , "min.yuhao@mayo.edu", role = c("aut", "cre"))
   )
@@ -11,6 +11,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
@@ -23,3 +25,4 @@ Imports:
     grid
 RoxygenNote: 7.3.3
 URL: http://www.myuhao.com/ggmulticomp/
+VignetteBuilder: knitr

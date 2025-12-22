@@ -8,21 +8,41 @@ base_plot = iris |>
   geom_point() +
   scale_y_continuous(expand = expansion(mult = c(0.1, 2)))
 
+
+
 test_that(
-  "Test StatTukey", {
+  "Test stat_tukey()", {
     vdiffr::expect_doppelganger(
-      "Base stat_tukey works",
+      "Base stat_tukey() works",
       base_plot + stat_tukey()
     )
 
     vdiffr::expect_doppelganger(
-      "stat_tukey can show ns",
+      "stat_tukey() change linetype",
+      base_plot + stat_tukey(linetype = 2)
+    )
+
+    vdiffr::expect_doppelganger(
+      "stat_tukey() change text_size",
+      base_plot + stat_tukey(text_size = 5)
+    )
+
+    vdiffr::expect_doppelganger(
+      "stat_tukey() will show ns",
       base_plot + stat_tukey(show.ns = TRUE)
     )
 
     vdiffr::expect_doppelganger(
-      "Transformation works",
-      base_plot + stat_tukey(trans_value = function(x) {1})
+      "stat_tukey() can handle data transformation",
+      base_plot + stat_tukey(trans_value = function(x){1}, show.ns = TRUE)
+    )
+
+    vdiffr::expect_doppelganger(
+      "stat_tukey() can label numeric",
+      base_plot + stat_tukey(
+        p.format = scales::label_pvalue(),
+        show.ns = TRUE
+      )
     )
   }
 )

@@ -1,3 +1,43 @@
+#' @keywords internal
+geom_tukey = function(
+    mapping = NULL,
+    data = NULL,
+    stat = "tukey",
+    position = "identity",
+    inherit.aes = TRUE,
+    show.ns = FALSE,
+    trans_value = NULL,
+    text_size = 12,
+    line_size = 1,
+    linetype = "solid",
+    p.format = NULL,
+    ...
+) {
+  layer(
+    mapping = mapping,
+    data = data,
+    geom = GeomTukey,
+    stat = stat,
+    position = position,
+    params = list(
+      show.ns = show.ns,
+      trans_value = trans_value,
+      text_size = text_size,
+      line_size = line_size,
+      linetype = linetype,
+      p.format = p.format,
+      ...
+    )
+  )
+}
+
+
+#' @keywords internal
+GeomTukey = ggproto(
+  "GeomTukey",
+  GeomBracket
+)
+
 
 #' Tukey HSD Test
 #'
@@ -8,6 +48,7 @@
 #' @param text_size Size of the significance symbols, default 12pt
 #' @param line_size Size of the lines spanning each group, default 1pt
 #' @param linetype Type of the line spanning each group
+#' @param p.format The format of the pvalue to display. This should be a function that accept dbl as input, and return a chr to be displayed. Default to show stars
 #'
 #' @description
 #' Perform Tukey HSD Test.
@@ -22,6 +63,7 @@ stat_tukey = function(
     inherit.aes = TRUE,
     show.ns = FALSE,
     trans_value = NULL,
+    p.format = NULL,
     ...
 ) {
   layer(
@@ -34,10 +76,12 @@ stat_tukey = function(
     params = list(
       trans_value = trans_value,
       show.ns = show.ns,
+      p.format = p.format,
       ...
     )
   )
 }
+
 
 
 #' @rdname Tukey
@@ -49,13 +93,15 @@ StatTukey = ggproto(
   setup_params = function(data, params) {
     params$show.ns = params$show.ns %||% FALSE
     params$trans_value = params$trans_value %||% function(x) {x}
+    params$p.format = params$p.format %||% .label_p_value
     return(params)
   },
   compute_panel = function(
     data, scales,
     step,
     trans_value,
-    show.ns
+    show.ns,
+    p.format
   ) {
     # Make sure x-axis is a discrete scale
     .check_x_scale_ok(scales)
@@ -66,6 +112,8 @@ StatTukey = ggproto(
     # Run the statistical test
     stat_results$x = as.character(stat_results$x)
     stat_results = .tukey_test(stat_results, trans_value)
+    # Annotate p values
+    stat_results$label = p.format(stat_results$adj.p.value)
     # Convert comparison back to numbers so ggplot can handle its x positions
     stat_results$x = as.integer(stat_results$group1)
     stat_results$xend = as.integer(stat_results$group2)
@@ -86,47 +134,7 @@ StatTukey = ggproto(
   }
 )
 
-#' @rdname Tukey
-#'
-#' @export
-geom_tukey = function(
-    mapping = NULL,
-    data = NULL,
-    stat = "tukey",
-    position = "identity",
-    inherit.aes = TRUE,
-    show.ns = FALSE,
-    trans_value = NULL,
-    text_size = 12,
-    line_size = 1,
-    linetype = "solid",
-    ...
-) {
-  layer(
-    mapping = mapping,
-    data = data,
-    geom = GeomTukey,
-    stat = stat,
-    position = position,
-    params = list(
-      show.ns = show.ns,
-      trans_value = trans_value,
-      text_size = text_size,
-      line_size = line_size,
-      linetype = linetype,
-      ...
-    )
-  )
-}
 
-
-#' @rdname Tukey
-#'
-#' @export
-GeomTukey = ggproto(
-  "GeomTukey",
-  GeomBracket
-)
 
 #' @keywords internal
 .tukey_test = function(data, trans_value) {
@@ -138,10 +146,7 @@ GeomTukey = ggproto(
   stat = stat[[1]] %>%
     tibble::as_tibble(rownames = "contrast") %>%
     tidyr::separate(col = contrast, into = c("group1", "group2"), sep = "-", remove = FALSE) %>%
-    rename(adj.p.value = `p adj`) %>%
-    mutate(
-      label = .label_p_value(adj.p.value)
-    )
+    rename(adj.p.value = `p adj`)
 
   return(stat)
 }

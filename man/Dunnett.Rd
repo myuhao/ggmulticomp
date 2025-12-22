@@ -4,7 +4,7 @@
 \name{stat_dunnett}
 \alias{stat_dunnett}
 \alias{StatDunnett}
-\title{Dunnett Multiple Test}
+\title{Dunnett's Test}
 \format{
 An object of class \code{StatDunnett} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 4.
 }
@@ -21,6 +21,8 @@ stat_dunnett(
   offset = NULL,
   trans_value = NULL,
   show.ns = TRUE,
+  p.format = NULL,
+  p.y_align = NULL,
   ...
 )
 
@@ -33,7 +35,17 @@ StatDunnett
 
 \item{trans_value}{A function that accept a vector as input and output a transformed vector. To be applied to y values before statistics test.}
 
-\item{show.ns}{Should non-significant results be shown}
+\item{show.ns}{Should non-significant results be shown?}
+
+\item{p.format}{The format of the pvalue to display. This should be a function that accept dbl as input, and return a chr to be displayed. Default to show stars}
+
+\item{p.y_align}{A number of 1, 2, 3 to specify how p-values are presented}
+
+\item{text_size}{Size of the significance symbols, default 12pt}
+
+\item{line_size}{Size of the lines spanning each group, default 1pt}
+
+\item{linetype}{Type of the line spanning each group}
 }
 \description{
 Perform Dunnett's Multiple Test Against a Reference group.
