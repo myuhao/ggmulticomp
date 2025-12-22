@@ -13,35 +13,17 @@ stat_tukey(
   inherit.aes = TRUE,
   show.ns = FALSE,
   trans_value = NULL,
+  p.format = NULL,
   ...
 )
 
 StatTukey
-
-geom_tukey(
-  mapping = NULL,
-  data = NULL,
-  stat = "tukey",
-  position = "identity",
-  inherit.aes = TRUE,
-  show.ns = FALSE,
-  trans_value = NULL,
-  text_size = 12,
-  line_size = 1,
-  linetype = "solid",
-  ...
-)
-
-GeomTukey
 ```
 
 ## Format
 
 An object of class `StatTukey` (inherits from `Stat`, `ggproto`, `gg`)
 of length 4.
-
-An object of class `GeomTukey` (inherits from `GeomBracket`, `Geom`,
-`ggproto`, `gg`) of length 1.
 
 ## Arguments
 
@@ -53,6 +35,12 @@ An object of class `GeomTukey` (inherits from `GeomBracket`, `Geom`,
 
   A function that accept a vector as input and output a transformed
   vector. To be applied to y values before statistics test.
+
+- p.format:
+
+  The format of the pvalue to display. This should be a function that
+  accept dbl as input, and return a chr to be displayed. Default to show
+  stars
 
 - text_size:
 
