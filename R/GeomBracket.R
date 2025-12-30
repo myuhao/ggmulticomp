@@ -12,6 +12,7 @@
 #' @param text_size Fontsize, in pt
 #' @param line_size Size of the bracket line
 #' @param linetype Format of the line.
+#' @param comparisons A list of selected comparisons to plot
 #'
 #' @keywords internal
 #'
@@ -24,6 +25,7 @@ geom_bracket = function(
     text_size = 12,
     line_size = 1,
     linetype = "solid",
+    comparisons = NULL,
     ...
 ) {
   layer(
@@ -36,6 +38,7 @@ geom_bracket = function(
       text_size = text_size,
       line_size = line_size,
       linetype = linetype,
+      comparisons = comparisons,
       ...
     )
   )
@@ -54,9 +57,27 @@ GeomBracket = ggproto(
     params$line_size = params$line_size  %||% 1
     params$linetype = params$linetype  %||% "solid"
 
+    all_comparisons = lapply(
+      1:nrow(data),
+      FUN = function(i) {
+        c(data$group1[i], data$group2[i])
+      }
+    )
+    params$comparisons = params$comparisons %||% all_comparisons
     return(params)
   },
-  draw_panel = function(data, panel_params, coord, text_size, line_size, linetype) {
+
+  setup_data = function(data, params) {
+    comparisons_to_keep = c(
+      lapply(params$comparisons, paste, collapse = "-"),
+      lapply(params$comparisons, rev) |> lapply(paste, collapse = "-")
+    )
+    data = filter(data, paste(group1, group2, sep = "-") %in% comparisons_to_keep)
+    return(data)
+  },
+
+  draw_panel = function(data, panel_params, coord, text_size, line_size, linetype, comparisons) {
+
     coords <- coord$transform(data, panel_params)
     # https://www.rdocumentation.org/packages/grid/versions/3.6.2/topics/gpar
     # https://www.rdocumentation.org/packages/grid/versions/3.6.2/topics/unit

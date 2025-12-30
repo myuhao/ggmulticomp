@@ -38,11 +38,17 @@ test_that(
       base_plot + stat_dunnett(geom = "bracket") + scale_y_continuous(expand = expansion(c(0.1, 1)))
     )
 
-
     vdiffr::expect_doppelganger(
       "Modification to bracket work",
       base_plot +
         stat_dunnett(geom = "bracket", text_size = 5, line_size = 0.5, linetype = 2) +
+        scale_y_continuous(expand = expansion(c(0.1, 1)))
+    )
+
+    vdiffr::expect_doppelganger(
+      "Show only selected comparisons.",
+      base_plot +
+        stat_dunnett(geom = "bracket", comparisons = list(c(1, 2))) +
         scale_y_continuous(expand = expansion(c(0.1, 1)))
     )
   }

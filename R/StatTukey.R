@@ -1,44 +1,3 @@
-#' @keywords internal
-geom_tukey = function(
-    mapping = NULL,
-    data = NULL,
-    stat = "tukey",
-    position = "identity",
-    inherit.aes = TRUE,
-    show.ns = FALSE,
-    trans_value = NULL,
-    text_size = 12,
-    line_size = 1,
-    linetype = "solid",
-    p.format = NULL,
-    ...
-) {
-  layer(
-    mapping = mapping,
-    data = data,
-    geom = GeomTukey,
-    stat = stat,
-    position = position,
-    params = list(
-      show.ns = show.ns,
-      trans_value = trans_value,
-      text_size = text_size,
-      line_size = line_size,
-      linetype = linetype,
-      p.format = p.format,
-      ...
-    )
-  )
-}
-
-
-#' @keywords internal
-GeomTukey = ggproto(
-  "GeomTukey",
-  GeomBracket
-)
-
-
 #' Tukey HSD Test
 #'
 #' @rdname Tukey
@@ -49,6 +8,7 @@ GeomTukey = ggproto(
 #' @param line_size Size of the lines spanning each group, default 1pt
 #' @param linetype Type of the line spanning each group
 #' @param p.format The format of the pvalue to display. This should be a function that accept dbl as input, and return a chr to be displayed. Default to show stars
+#' @param comparisons A list of selected comparisons to plot
 #'
 #' @description
 #' Perform Tukey HSD Test.
@@ -61,7 +21,7 @@ stat_tukey = function(
     geom = GeomBracket,
     position = "identity",
     inherit.aes = TRUE,
-    show.ns = FALSE,
+    show.ns = TRUE,
     trans_value = NULL,
     p.format = NULL,
     ...

@@ -44,5 +44,12 @@ test_that(
         show.ns = TRUE
       )
     )
+
+    vdiffr::expect_doppelganger(
+      "stat_tukey() can show only selected comparisons",
+      base_plot + stat_tukey(
+        comparisons = c(1, 2)
+      )
+    )
   }
 )

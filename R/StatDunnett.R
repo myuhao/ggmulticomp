@@ -5,12 +5,13 @@
 #' @param ref.group The reference group to be used. Default to the first level of x-axis (sort())
 #' @param trans_value A function that accept a vector as input and output a transformed vector. To be applied to y values before statistics test.
 #' @param show.ns Should non-significant results be shown?
-#' @param text_size Size of the significance symbols, default 12pt
-#' @param line_size Size of the lines spanning each group, default 1pt
-#' @param linetype Type of the line spanning each group
 #' @param p.format The format of the pvalue to display. This should be a function that accept dbl as input, and return a chr to be displayed. Default to show stars
 #' @param offset How much the label will offset from the data points. Default 0.1
 #' @param p.y_align A number of 1, 2, 3 to specify how p-values are presented
+#' @param text_size Size of the significance symbols, default 12pt
+#' @param line_size Size of the lines spanning each group, default 1pt
+#' @param linetype Type of the line spanning each group
+#' @param comparisons A list of selected comparisons to plot
 #'
 #' @description
 #' Perform Dunnett's Multiple Test Against a Reference group.

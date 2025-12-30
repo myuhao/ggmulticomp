@@ -6,7 +6,7 @@
 \alias{GeomBracket}
 \title{Plot brackets}
 \format{
-An object of class \code{GeomBracket} (inherits from \code{Geom}, \code{ggproto}, \code{gg}) of length 4.
+An object of class \code{GeomBracket} (inherits from \code{Geom}, \code{ggproto}, \code{gg}) of length 5.
 }
 \usage{
 geom_bracket(
@@ -18,6 +18,7 @@ geom_bracket(
   text_size = 12,
   line_size = 1,
   linetype = "solid",
+  comparisons = NULL,
   ...
 )
 
@@ -29,6 +30,8 @@ GeomBracket
 \item{line_size}{Size of the bracket line}
 
 \item{linetype}{Format of the line.}
+
+\item{comparisons}{A list of selected comparisons to plot}
 }
 \description{
 Base geom to plot brackets for pairwise comparisons. Takes location of the

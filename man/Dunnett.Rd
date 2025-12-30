@@ -46,6 +46,8 @@ StatDunnett
 \item{line_size}{Size of the lines spanning each group, default 1pt}
 
 \item{linetype}{Type of the line spanning each group}
+
+\item{comparisons}{A list of selected comparisons to plot}
 }
 \description{
 Perform Dunnett's Multiple Test Against a Reference group.

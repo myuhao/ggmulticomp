@@ -15,7 +15,7 @@ stat_tukey(
   geom = GeomBracket,
   position = "identity",
   inherit.aes = TRUE,
-  show.ns = FALSE,
+  show.ns = TRUE,
   trans_value = NULL,
   p.format = NULL,
   ...
@@ -35,6 +35,8 @@ StatTukey
 \item{line_size}{Size of the lines spanning each group, default 1pt}
 
 \item{linetype}{Type of the line spanning each group}
+
+\item{comparisons}{A list of selected comparisons to plot}
 }
 \description{
 Perform Tukey HSD Test.
