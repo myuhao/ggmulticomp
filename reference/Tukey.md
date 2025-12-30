@@ -11,7 +11,7 @@ stat_tukey(
   geom = GeomBracket,
   position = "identity",
   inherit.aes = TRUE,
-  show.ns = FALSE,
+  show.ns = TRUE,
   trans_value = NULL,
   p.format = NULL,
   ...
@@ -53,3 +53,7 @@ of length 4.
 - linetype:
 
   Type of the line spanning each group
+
+- comparisons:
+
+  A list of selected comparisons to plot

@@ -12,3 +12,7 @@
 
 - Add options to show numeric p-values
 - Unified Dunnett and Tukey parameters
+
+## ggmulticomp 0.1.2
+
+- Add options to only display selected comparisons

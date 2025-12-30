@@ -73,6 +73,10 @@ of length 4.
 
   Type of the line spanning each group
 
+- comparisons:
+
+  A list of selected comparisons to plot
+
 ## See also
 
 DescTools::DunnettTest()

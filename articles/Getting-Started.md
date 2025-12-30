@@ -6,7 +6,7 @@ library(ggmulticomp)
 
 
 df = iris |>
-  tidyr::pivot_longer(-Species )
+  tidyr::pivot_longer(-Species)
 
 base_plot = df |>
   ggplot(aes(x = Species, y = value)) +
@@ -108,6 +108,18 @@ base_plot +
 
 ![](Getting-Started_files/figure-html/unnamed-chunk-6-1.png)
 
+The `comparisons()` parameter allows only selected comparisons to be
+displayed. This parameter doesn’t change the underlying statistics (all
+groups will be included in statistical test).
+
+``` r
+base_plot +
+  stat_tukey(comparisons = list(c(1, 2))) +
+  scale_y_continuous(expand = expansion(mult = c(0.1, 0.3)))
+```
+
+![](Getting-Started_files/figure-html/unnamed-chunk-7-1.png)
+
 ## Dunnett
 
 Dunnett test works similar to Tukey test. The parameter should work
@@ -120,7 +132,7 @@ base_plot +
   stat_dunnett()
 ```
 
-![](Getting-Started_files/figure-html/unnamed-chunk-7-1.png)
+![](Getting-Started_files/figure-html/unnamed-chunk-8-1.png)
 
 A different style of alignment can be used.
 
@@ -129,7 +141,7 @@ base_plot +
   stat_dunnett(p.y_align = 2)
 ```
 
-![](Getting-Started_files/figure-html/unnamed-chunk-8-1.png)
+![](Getting-Started_files/figure-html/unnamed-chunk-9-1.png)
 
 If you want explicitly show which comparisons are made, use
 `GeomBracket` as the geom.
@@ -141,4 +153,4 @@ base_plot +
   scale_y_continuous(expand = expansion(mult = c(0.1, 0.5)))
 ```
 
-![](Getting-Started_files/figure-html/unnamed-chunk-9-1.png)
+![](Getting-Started_files/figure-html/unnamed-chunk-10-1.png)

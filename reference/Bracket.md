@@ -16,6 +16,7 @@ geom_bracket(
   text_size = 12,
   line_size = 1,
   linetype = "solid",
+  comparisons = NULL,
   ...
 )
 
@@ -25,7 +26,7 @@ GeomBracket
 ## Format
 
 An object of class `GeomBracket` (inherits from `Geom`, `ggproto`, `gg`)
-of length 4.
+of length 5.
 
 ## Arguments
 
@@ -40,3 +41,7 @@ of length 4.
 - linetype:
 
   Format of the line.
+
+- comparisons:
+
+  A list of selected comparisons to plot

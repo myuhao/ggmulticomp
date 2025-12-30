@@ -22,29 +22,13 @@ dat = iris |>
     y = value, x = Species
   ) 
 
-dat |>
-  ggplot(aes(x = Species, y = value)) +
+iris |>
+  ggplot(aes(x = Species, y = Sepal.Length)) +
   geom_point() +
   stat_summary(geom = GeomCol) +
-  stat_dunnett(color = "red") +
-  facet_grid(rows = vars(name), cols = vars("a"), scale = "free_y")
+  stat_tukey() +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.3)))
 #> No summary function supplied, defaulting to `mean_se()`
-#> Warning: Removed 4 rows containing missing values or values outside the scale range
-#> (`geom_text()`).
 ```
 
 ![](reference/figures/README-example-1.png)
-
-``` r
-
-dat |>
-  ggplot(aes(x = Species, y = value)) +
-  geom_point() +
-  stat_summary(geom = GeomCol) +
-  geom_tukey() +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.2))) +
-  facet_grid(rows = vars(name), cols = vars("a"), scale = "free_y")
-#> No summary function supplied, defaulting to `mean_se()`
-```
-
-![](reference/figures/README-example-2.png)
